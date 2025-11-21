@@ -1,0 +1,20 @@
+import Mathlib
+
+
+theorem mileti_2_1_3_curried
+    {X : Type*} (y : X) (g : ℕ → X → X) :
+    ∃! f : ℕ → X, f 0 = y ∧ ∀ n, f (n.succ) = g n (f n) := by
+      -- Define the function $f$ recursively using the given initial condition and recursive step.
+      use fun n => Nat.recOn n y (fun n f_n => g n f_n);
+      -- To prove uniqueness, assume there exists another function $y_1$ satisfying the same conditions.
+      apply And.intro;
+      · -- Show that $f(0) = y$.
+        simp [Nat.recOn];
+      · -- To prove uniqueness, we use induction on $n$.
+        intro y_1 hy_1
+        funext n
+        induction' n with n ih;
+        · -- By definition of y_1, we have y_1 0 = y.
+          simp [hy_1.left];
+        · -- Substitute the induction hypothesis into the hypothesis hy_1.
+          rw [hy_1.right, ih]
