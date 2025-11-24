@@ -1,0 +1,304 @@
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\title{Quantifier Elimination in Dense Algebraic/Ordered Structures}
+\author{(Converted from PDF)}
+\date{}
+
+
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+%\newcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+%
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bB}{\mathbb{B}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bG}{\mathbb{G}}
+\newcommand{\bH}{\mathbb{H}}
+\newcommand{\bI}{\mathbb{I}}
+\newcommand{\bJ}{\mathbb{J}}
+\newcommand{\bK}{\mathbb{K}}
+\newcommand{\bL}{\mathbb{L}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bO}{\mathbb{O}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bU}{\mathbb{U}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+
+
+% sub- and superscripts
+\newcommand{\an}{ \mathrm{an} }
+\newcommand{\val}{ \mathrm{val} }
+\newcommand{\ring}{ \mathrm{ring} }
+\newcommand{\og}{ \mathrm{og} }
+\newcommand{\Pres}{ \mathrm{Pres} }
+\newcommand{\gDP}{\mathrm{gDP}}
+\newcommand{\DP}{ \mathrm{DP}}
+\newcommand{\Hen}{\mathrm{Hen}}
+\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\trans}{\mathrm{trans}}
+\newcommand{\fine}{\mathrm{fine}}
+\newcommand{\oag}{\mathrm{oag}}
+\newcommand{\ovf}{\mathrm{ovf}}
+\newcommand{\trop}{\mathrm{trop}}
+\newcommand{\RRV}{\mathrm{RRV}}
+\newcommand{\omin}{\mathrm{omin}}
+\newcommand{\eq}{\mathrm{eq}}
+%
+
+% Sorts
+\newcommand{\RV}{\mathrm{RV}}
+\newcommand{\RF}{\mathrm{RF}}
+\newcommand{\RVprod}{ \RV_{\bar{n}} }
+\newcommand{\VG}{\mathrm{VG}}
+\newcommand{\VF}{\mathrm{VF}}
+%
+
+% Languages
+\newcommand{\lang}{\mathcal{L}}
+\newcommand{\Lval}{\lang_{\val}}
+\newcommand{\Lor}{\lang_{\mathrm{or}}}
+\newcommand{\Lan}{\lang_{\an}}
+\newcommand{\Lring}{\lang_{\ring}}
+\newcommand{\Lvf}{\lang_{\VF}}
+\newcommand{\LRV}{ \lang^{\RV} }
+\newcommand{\LRVplus}{\lang^{\RV^{+}}}
+\newcommand{\Lac}{\lang^{\ac}}
+\newcommand{\Log}{\lang_{\og}}
+\newcommand{\Lpres}{\lang_{\Pres}}
+\newcommand{\LDP}{\lang_{\DP}}
+\newcommand{\LgDP}{\lang_{\gDP}}
+\newcommand{\Lgroup}{\lang_{\mathrm{group}} }
+\newcommand{\Ldpr}{\lang_{\gDP}^{\mathrm{res}}}
+\newcommand{\Lrfn}{\lang_{\RF_N}}
+\newcommand{\Lvg}{\lang_{\VG}}
+\newcommand{\Lrv}{\lang{\RV}}
+\newcommand{\LZpan}{\cL_{\ZZ_p\langle x \rangle}}
+%
+
+% Theories
+\newcommand{\THen}{T_{\Hen}}
+\newcommand{\Tpres}{T_{\Pres} }
+\newcommand{\THeno}{T_{\Hen,0}}
+%
+
+% operators
+\DeclareMathOperator{\acl}{acl}
+\DeclareMathOperator{\dcl}{dcl}
+\DeclareMathOperator{\rcl}{rcl}
+\DeclareMathOperator{\qftp}{qftp}
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\ac}{ac}
+\DeclareMathOperator{\rv}{rv}
+\DeclareMathOperator{\res}{res}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\lct}{lct}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\fibdim}{fibdim}
+
+\DeclareMathOperator{\cdim}{\#\mathrm{-}\dim}
+\DeclareMathOperator{\radop}{radop}
+\DeclareMathOperator{\radcl}{radcl}
+\DeclareMathOperator{\LT}{LT}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\tr}{tr}
+%
+
+%Big operators
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Loc}{Loc}
+
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\K}{K}
+\DeclareMathOperator{\Fn}{Fn}
+
+\DeclareMathOperator{\Lone}{L^1}
+
+%
+
+%Binary operators
+\newcommand{\divR}{\mathbin{|^{\cR}}}
+%
+
+%Brackets
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{<}{>}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+\DeclarePairedDelimiter{\bignorm}{\big\lVert}{\big\rVert}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma-definition}[theorem]{Lemma-Definition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{assumption}[theorem]{Assumption}
+
+
+\begin{document}
+Before we dive into the next theorem, recall that $\operatorname{Diag}(A)$ represents the diagram of $A$.
+\begin{theorem}[3.1.4] \label{thm:3.1.4}
+	Suppose that $L$ contains a constant symbol $c$, $T$ is an $L$-theory, and $\varphi(v)$ is an $L$-formula. The following are equivalent:
+	\begin{enumerate}[label=\roman*)]
+		\item There is a quantifier-free $L$-formula $\psi(v)$ such that $T\models \forall v\,(\varphi(v)\leftrightarrow \psi(v))$.
+		\item If $M$ and $N$ are models of $T$, $A$ is an $L$-structure with $A\subseteq M$ and $A\subseteq N$, then $M\models \varphi(a)$ if and only if $N\models \varphi(a)$ for all $a\in A$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	(i)$\Rightarrow$(ii): Suppose that $T\models \forall v\,(\varphi(v)\leftrightarrow \psi(v))$, where $\psi$ is quantifier-free. Let $a\in A$, where $A$ is a common substructure of $M$ and $N$ and the latter two structures are models of $T$. Quantifier-free formulas are preserved under substructure and extension, hence
+	\[ M\models \varphi(a) \iff M\models \psi(a) \iff A\models \psi(a) \iff N\models \psi(a) \iff N\models \varphi(a). \]
+	(ii)$\Rightarrow$(i): First, if $T\models \forall v\,\varphi(v)$, then $T\models \forall v\,(\varphi(v)\leftrightarrow c=c)$. Second, if $T\models \forall v\,\lnot\varphi(v)$, then $T\models \forall v\,(\varphi(v)\leftrightarrow c=c)$. Thus, we may assume that both $T\cup\{\varphi(v)\}$ and $T\cup\{\lnot\varphi(v)\}$ are satisfiable.
+	
+	Let $\Gamma(v)=\{\psi(v): \psi \text{ is quantifier-free and } T\models \forall v\,(\varphi(v)\to \psi(v))\}$. Let $d$ be (a tuple of) new constant symbol(s). We show that $T\cup \Gamma(d) \models \varphi(d)$. Then, by compactness, there are $\psi_1,\dots,\psi_n\in \Gamma$ such that
+	\[ T\models \forall v\,\Big(\bigwedge_{i=1}^n \psi_i(v)\to \varphi(v)\Big), \]
+	whence
+	\[ T\models \forall v\,\Big(\bigwedge_{i=1}^n \psi_i(v) \leftrightarrow \varphi(v)\Big), \]
+	and $\bigwedge_{i=1}^n \psi_i(v)$ is quantifier-free.
+	
+	\emph{Claim.} $T\cup \Gamma(d) \models \varphi(d)$. Suppose not. Let $M\models T\cup \Gamma(d)\cup\{\lnot\varphi(d)\}$. Let $A$ be the substructure of $M$ generated by $d$. Let $\Sigma = T\cup \operatorname{Diag}(A)\cup\{\varphi(d)\}$. If $\Sigma$ is unsatisfiable, then there are quantifier-free formulas $\psi_1(d),\dots,\psi_n(d)\in \operatorname{Diag}(A)$ such that
+	\[ T\models \forall v\,\Big(\bigwedge_{i=1}^n \psi_i(v)\to \lnot\varphi(v)\Big). \]
+	But then
+	\[ T\models \forall v\,\Big(\varphi(v)\to \bigvee_{i=1}^n \lnot\psi_i(v)\Big), \]
+	
+	so $ \bigvee_{i=1}^n \lnot \psi_i(v) \in \Gamma$ and $A \models \bigvee_{i=1}^n \lnot \psi_i(d)$, a contradiction. Thus, $\Sigma$ is satisfiable.
+	
+	Let $N \models \Sigma$. Then $N \models \varphi(d)$. Because $\Sigma \supseteq \operatorname{Diag}(A)$, $A \subseteq N$, by Lemma [TODO]. But $M \models \lnot \phi(d)$; thus by {ii)}, $N \models \lnot \phi(d)$, a contradiction.
+\end{proof}
+
+%Rewritten to be closer to be closer to the natural induction on formulas in Mathlib
+%Also, had to fix several errors introduced by chatgpt
+\begin{lemma}[3.1.5] \label{lem:3.1.5}
+	Let $T$ be an $L$-theory. Suppose that for every quantifier-free $L$-formula $\theta(v,w)$ there is a quantifier-free formula $\psi(v)$ such that
+	\[ T\models \big(\exists w\,\theta(v,w) \leftrightarrow \psi(v)\big). \]
+	Then $T$ has quantifier elimination.
+\end{lemma}
+
+\begin{proof}
+	Let $\varphi(v)$ be an $L$-formula. We aim to show that $T\models \forall v\,(\varphi(v)\leftrightarrow \psi(v))$ for some quantifier-free $\psi(v)$. Proceed by induction on the complexity of $\varphi$.
+	
+	If $\varphi$ is quantifier-free, there is nothing to prove. Suppose inductively that for $i=0,1$ we have $T\models \forall v\,(\theta_i(v)\leftrightarrow \psi_i(v))$ with $\psi_i$ quantifier-free. If $\varphi(v)=\neg\theta_0(v)$, then
+	\[ T\models \forall v\,(\varphi(v)\leftrightarrow \neg\psi_0(v)). \]
+	
+	If $\varphi(v)=\theta_0(v) \to  \theta_1(v)$, then
+	\[ T\models \forall v\,(\varphi(v)\leftrightarrow (\psi_0(v)\to \psi_1(v))). \]
+	In either case, $\phi$ is equivalent to a quantifier-free formula.
+	
+	Now suppose $\varphi(v)=\forall w\,\theta(v,w) \leftrightarrow \psi_0(v,w)$, where $\psi_0$ is quantifier-free and $\phi(v) = \forall w \theta(v,w)$ . 
+	Then
+	\[ T\models \forall v\,(\varphi(v)\leftrightarrow \forall w\,\psi_0(v,w)). \]
+	Hence, 
+	%
+	\[ T \models \forall v\,(\lnot \varphi(v)\leftrightarrow \exists \lnot w\,\psi_0(v,w)). \]
+	By hypothesis, there is quantifier-free $\psi(v)$ with
+	\[ T\models \forall v\,(\lnot \forall w\,\theta(v,w)\leftrightarrow \psi(v)). \]
+	It follows that 
+	%
+	\[ T\models \forall v\,( \forall w\,\theta(v,w)\leftrightarrow \lnot \psi(v)), \]
+	%
+	where $\lnot \psi(v)$ is quantifier-free.
+\end{proof}
+
+\begin{corollary}[3.1.6]
+	Let $T$ be an $L$-theory. Suppose that for all quantifier-free formulas $\varphi(v,w)$, if $M,N\models T$, $A$ is a common substructure of $M$ and $N$, $a\in A$, and there is $b\in M$ such that $M\models \varphi(a,b)$, then there is $c\in N$ such that $N\models \varphi(a,c)$. Then $T$ has quantifier elimination.
+\end{corollary}
+%
+\begin{proof}
+	Combine Theorem~\ref{thm:3.1.4} and Lemma~\ref{lem:3.1.5}.
+\end{proof}
+
+\end{document}

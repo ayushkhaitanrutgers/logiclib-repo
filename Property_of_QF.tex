@@ -1,0 +1,282 @@
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\title{Quantifier Elimination in Dense Algebraic/Ordered Structures}
+\author{(Converted from PDF)}
+\date{}
+
+
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+%\newcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+%
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bB}{\mathbb{B}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bG}{\mathbb{G}}
+\newcommand{\bH}{\mathbb{H}}
+\newcommand{\bI}{\mathbb{I}}
+\newcommand{\bJ}{\mathbb{J}}
+\newcommand{\bK}{\mathbb{K}}
+\newcommand{\bL}{\mathbb{L}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bO}{\mathbb{O}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bU}{\mathbb{U}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+
+
+% sub- and superscripts
+\newcommand{\an}{ \mathrm{an} }
+\newcommand{\val}{ \mathrm{val} }
+\newcommand{\ring}{ \mathrm{ring} }
+\newcommand{\og}{ \mathrm{og} }
+\newcommand{\Pres}{ \mathrm{Pres} }
+\newcommand{\gDP}{\mathrm{gDP}}
+\newcommand{\DP}{ \mathrm{DP}}
+\newcommand{\Hen}{\mathrm{Hen}}
+\newcommand{\alg}{\mathrm{alg}}
+\newcommand{\trans}{\mathrm{trans}}
+\newcommand{\fine}{\mathrm{fine}}
+\newcommand{\oag}{\mathrm{oag}}
+\newcommand{\ovf}{\mathrm{ovf}}
+\newcommand{\trop}{\mathrm{trop}}
+\newcommand{\RRV}{\mathrm{RRV}}
+\newcommand{\omin}{\mathrm{omin}}
+\newcommand{\eq}{\mathrm{eq}}
+%
+
+% Sorts
+\newcommand{\RV}{\mathrm{RV}}
+\newcommand{\RF}{\mathrm{RF}}
+\newcommand{\RVprod}{ \RV_{\bar{n}} }
+\newcommand{\VG}{\mathrm{VG}}
+\newcommand{\VF}{\mathrm{VF}}
+%
+
+% Languages
+\newcommand{\lang}{\mathcal{L}}
+\newcommand{\Lval}{\lang_{\val}}
+\newcommand{\Lor}{\lang_{\mathrm{or}}}
+\newcommand{\Lan}{\lang_{\an}}
+\newcommand{\Lring}{\lang_{\ring}}
+\newcommand{\Lvf}{\lang_{\VF}}
+\newcommand{\LRV}{ \lang^{\RV} }
+\newcommand{\LRVplus}{\lang^{\RV^{+}}}
+\newcommand{\Lac}{\lang^{\ac}}
+\newcommand{\Log}{\lang_{\og}}
+\newcommand{\Lpres}{\lang_{\Pres}}
+\newcommand{\LDP}{\lang_{\DP}}
+\newcommand{\LgDP}{\lang_{\gDP}}
+\newcommand{\Lgroup}{\lang_{\mathrm{group}} }
+\newcommand{\Ldpr}{\lang_{\gDP}^{\mathrm{res}}}
+\newcommand{\Lrfn}{\lang_{\RF_N}}
+\newcommand{\Lvg}{\lang_{\VG}}
+\newcommand{\Lrv}{\lang{\RV}}
+\newcommand{\LZpan}{\cL_{\ZZ_p\langle x \rangle}}
+%
+
+% Theories
+\newcommand{\THen}{T_{\Hen}}
+\newcommand{\Tpres}{T_{\Pres} }
+\newcommand{\THeno}{T_{\Hen,0}}
+%
+
+% operators
+\DeclareMathOperator{\acl}{acl}
+\DeclareMathOperator{\dcl}{dcl}
+\DeclareMathOperator{\rcl}{rcl}
+\DeclareMathOperator{\qftp}{qftp}
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\ac}{ac}
+\DeclareMathOperator{\rv}{rv}
+\DeclareMathOperator{\res}{res}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\lct}{lct}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\fibdim}{fibdim}
+
+\DeclareMathOperator{\cdim}{\#\mathrm{-}\dim}
+\DeclareMathOperator{\radop}{radop}
+\DeclareMathOperator{\radcl}{radcl}
+\DeclareMathOperator{\LT}{LT}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\tr}{tr}
+%
+
+%Big operators
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Loc}{Loc}
+
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\K}{K}
+\DeclareMathOperator{\Fn}{Fn}
+
+\DeclareMathOperator{\Lone}{L^1}
+
+%
+
+%Binary operators
+\newcommand{\divR}{\mathbin{|^{\cR}}}
+%
+%Brackets
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\inprod}{<}{>}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+\DeclarePairedDelimiter{\bignorm}{\big\lVert}{\big\rVert}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma-definition}[theorem]{Lemma-Definition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\begin{document}
+
+Let $M,N$ be $L$-structures for a first-order Language $L$.
+\begin{proposition}[1.1.8] \label{prop:1.1.8}
+	Suppose that $M$ is a substructure of $N$, $a\in M$, and $\varphi(v)$ is a quantifier\mbox{-}free formula. Then
+	\[
+	M \models \varphi(a) \quad\text{if and only if}\quad N \models \varphi(a).
+	\]
+\end{proposition}
+\begin{proof}
+	
+	\emph{Claim.} If $t(v)$ is a term and $b\in M$, then $t^M(b)=t^N(b)$. This is proved by induction on terms. 
+	If $t$ is the constant symbol $c$, then $c^M=c^N$. If $t$ is the variable $v_i$, then $t^M(b)=b_i=t^N(b)$. 
+	Suppose that $t=f(t_1,\dots,t_n)$, where $f$ is an $n$-ary function symbol and $t_1,\dots,t_n$ are terms, and $t_i^M(b)=t_i^N(b)$ for $i=1,\dots,n$. Because $M\subseteq N$, we have $f^M = f^N\!\upharpoonright M^n$. Thus,
+	\[
+	t^M(b)=f^M\big(t_1^M(b),\dots,t_n^M(b)\big)
+	= f^N\big(t_1^M(b),\dots,t_n^M(b)\big)
+	= f^N\big(t_1^N(b),\dots,t_n^N(b)\big)
+	= t^N(b).
+	\]
+	This proves the claim.
+	
+	We now prove the proposition by induction on formulas. If $\varphi$ is $t_1=t_2$, then
+	\[
+	M \models \varphi(a) \iff t_1^M(a)=t_2^M(a) \iff t_1^N(a)=t_2^N(a) \iff N \models \varphi(a).
+	\]
+	If $\varphi$ is $R(t_1,\dots,t_n)$, where $R$ is an $n$-ary relation symbol, then
+	\[
+	\begin{aligned}
+		M \models \varphi(a) 
+		&\iff \big(t_1^M(a),\dots,t_n^M(a)\big)\in R^M \\
+		&\iff \big(t_1^M(a),\dots,t_n^M(a)\big)\in R^N \\
+		&\iff \big(t_1^N(a),\dots,t_n^N(a)\big)\in R^N \\
+		&\iff N \models \varphi(a).
+	\end{aligned}
+	\]
+	Thus, the proposition is true for all atomic formulas.
+	
+	Suppose that the proposition is true for $\psi$ and that $\varphi$ is $\neg\psi$. Then
+	\[
+	M \models \neg\varphi(a) \iff M \models \psi(a) \iff N \models \psi(a) \iff N \models \varphi(a).
+	\]
+	Finally, suppose that the proposition is true for $\psi_0$ and $\psi_1$, and that $\varphi$ is $\psi_0 \wedge \psi_1$. Then
+	\[
+	M \models \varphi(a) \iff M \models \psi_0(a)\ \text{and}\ M \models \psi_1(a)
+	\iff N \models \psi_0(a)\ \text{and}\ N \models \psi_1(a)
+	\iff N \models \varphi(a).
+	\]
+	
+	We have shown that the proposition holds for all atomic formulas and that if it holds for $\varphi$ and $\psi$, then it also holds for $\neg\varphi$ and $\varphi \wedge \psi$. Because the set of quantifier\mbox{-}free formulas is the smallest set of formulas containing the atomic formulas and closed under negation and conjunction, the proposition is true for all quantifier\mbox{-}free formulas. \qedhere
+\end{proof}
+
+\end{document}
